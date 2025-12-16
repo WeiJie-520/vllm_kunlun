@@ -50,12 +50,12 @@ docker run -itd ${DOCKER_DEVICE_CONFIG} \
 ```
 conda activate python310_torch25_cuda
 
-pip install vllm==0.11.0 
+pip install vllm==0.11.0 --no-build-isolation --no-deps
 ```
 ### Build and Install
 Navigate to the vllm-kunlun directory and build the package:
 ```
-git clone xxxx # TODO: replace with Github Url to install vllm-kunlun
+git clone vllm-kunlun
 
 cd vllm-kunlun
 
@@ -73,7 +73,8 @@ cp vllm_kunlun/patches/eval_frame.py /root/miniconda/envs/python310_torch25_cuda
 ```
 ## Install the KL3-customized build of PyTorch
 ```
-wget https://klx-sdk-release-public.su.bcebos.com/xpytorch/release/3.3.2.7/xpytorch-cp310-torch251-ubuntu2004-x64.run && bash xpytorch-cp310-torch251-ubuntu2004-x64.run
+wget -O xpytorch-cp310-torch251-ubuntu2004-x64.run https://baidu-kunlun-public.su.bcebos.com/v1/baidu-kunlun-share/1130/xpytorch-cp310-torch251-ubuntu2004-x64.run?authorization=bce-auth-v1%2FALTAKypXxBzU7gg4Mk4K4c6OYR%2F2025-12-02T05%3A01%3A27Z%2F-1%2Fhost%2Ff3cf499234f82303891aed2bcb0628918e379a21e841a3fac6bd94afef491ff7
+bash xpytorch-cp310-torch251-ubuntu2004-x64.run
 ```
 
 ## Install custom ops
@@ -84,20 +85,18 @@ pip uninstall xtorch_ops -y && pip install \
 
 ## Install the KLX3 custom Triton build
 ```
-pip install \
-"https://cce-ai-models.bj.bcebos.com/v1/vllm-kunlun-0.11.0/triton-3.0.0%2Bb2cde523-cp310-cp310-linux_x86_64.whl?authorization=bce-auth-v1%2FALTAKxPW2jzoJUuFZmI19s3yry%2F2025-11-05T02%3A47%3A29Z%2F-1%2Fhost%2Fd8c95dbd06187a3140ca3e681e00c6941c30e14bb1d4112a0c8bc3c93e5c9c3f"
+pip install "https://baidu-kunlun-public.su.bcebos.com/v1/baidu-kunlun-share/1130/xtorch_ops-0.1.2209%2B6752ad20-cp310-cp310-linux_x86_64.whl?authorization=bce-auth-v1%2FALTAKypXxBzU7gg4Mk4K4c6OYR%2F2025-12-05T06%3A18%3A00Z%2F-1%2Fhost%2F14936c2b7e7c557c1400e4c467c79f7a9217374a7aa4a046711ac4d948f460cd"
 ```
 ## Install the AIAK custom ops library
 ```
-pip install \
-"https://cce-ai-models.bj.bcebos.com/v1/chenyili/xspeedgate_ops-0.0.0-cp310-cp310-linux_x86_64.whl?authorization=bce-auth-v1%2FALTAKxPW2jzoJUuFZmI19s3yry%2F2025-11-18T01%3A56%3A21Z%2F-1%2Fhost%2F28b57cbc5dc62ac1bf946e74146b3ea4952d2ffff448617f0303980dcaf6cb49"
+pip install "https://cce-ai-models.bj.bcebos.com/v1/vllm-kunlun-0.11.0/triton-3.0.0%2Bb2cde523-cp310-cp310-linux_x86_64.whl?authorization=bce-auth-v1%2FALTAKxPW2jzoJUuFZmI19s3yry%2F2025-11-05T02%3A47%3A29Z%2F-1%2Fhost%2Fd8c95dbd06187a3140ca3e681e00c6941c30e14bb1d4112a0c8bc3c93e5c9c3f"
 ```
 ## Quick Start
 
 ### Set up the environment
 
 ```
-chmod +x /workspace/baidu/hac-aiacc/vllm-kunlun/setup_env.sh && source /workspace/baidu/hac-aiacc/vllm-kunlun/setup_env.sh
+chmod +x /workspace/vLLM-Kunlun/setup_env.sh && source /workspace/vLLM-Kunlun/setup_env.sh
 ```
 
 ### Run the server
