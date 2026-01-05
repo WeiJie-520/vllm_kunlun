@@ -15,6 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: setup uv
-        run: uv pip install pytest
+        run: uv pip install --system pytest
       - name: Test
         run: uv run pytest test.py
