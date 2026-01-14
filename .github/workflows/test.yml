@@ -21,9 +21,10 @@ jobs:
         run: |
           echo '{"name": "test"}' | jq '.name'
           uname -i
-          
+
       - name: Official FOSSA Action
         uses: fossas/fossa-action@v1.7.0
+        
       # - name: Test
       #   env:  
       #       XPU_VISIBLE_DEVICES: "0"
